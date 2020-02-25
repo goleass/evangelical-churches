@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Church = require('../models/Church');
+const cors = require('cors');
 
 router.get('/', async (req, res) => {
   try {
