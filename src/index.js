@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended:false }));
 app.use(morgan('dev'));
 
 require('./controllers/authController')(app);
-require('./controllers/projectController')(app);
 require('./controllers/churchController')(app);
 require('./controllers/adminChurchController')(app)
+require('./controllers/searchController')(app)
   
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);

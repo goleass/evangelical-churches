@@ -5,6 +5,10 @@ const PointSchema = require('./utils/PointSchema');
 const ChurchSchema = new mongoose.Schema({
   name: String,
   church_name: String,
+  city: {
+    type: String,
+    required: true
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
