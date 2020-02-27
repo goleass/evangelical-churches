@@ -9,14 +9,15 @@ const ChurchSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  address: String,
+  location: {
+    type: PointSchema,
+    index: '2dsphere'
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  },
-  location: {
-    type: PointSchema,
-    index: '2dsphere'
   },
   createdAt:{
     type: Date,

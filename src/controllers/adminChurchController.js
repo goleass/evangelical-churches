@@ -5,7 +5,7 @@ const authMiddleware = require('../middlewares/auth');
 router.use(authMiddleware);
 
 router.post('/newChurch', async (req, res) => {
-  const { name, church_name, city, latitude, longitude } = req.body;
+  const { name, church_name, city, address, latitude, longitude } = req.body;
 
   const location = {
     type: "Point",
@@ -16,6 +16,7 @@ router.post('/newChurch', async (req, res) => {
     name,
     church_name,
     city,
+    address,
     user: req.userId,
     location
   })
@@ -25,13 +26,14 @@ router.post('/newChurch', async (req, res) => {
 
 router.put('/:churchId', async (req, res) => {
   const _id = req.params.churchId;
-  const { name, church_name, city } = req.body;
-
+  const { name, church_name, city, address } = req.body;
+  
   try {
     const church = await Church.findByIdAndUpdate(_id, {
       name,
       church_name,
-      city
+      city,
+      address
     }, { new: true }).populate('user');
 
     return res.send({ church });
