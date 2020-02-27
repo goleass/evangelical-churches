@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
   const churches = await Church.find({
     $or: [
       { church_name: { $regex: regex } },
-      { name: { $regex: regex } }],
+      { name: { $regex: regex } },
+      { city: { $regex: regex } }],
     location: {
       $near: {
         $geometry: {
