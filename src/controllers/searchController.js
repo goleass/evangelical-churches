@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
         $maxDistance: 10000
       }
     },
-  });
+  }).populate('user');
 
   return res.send({ churches });
 });
